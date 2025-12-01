@@ -25,7 +25,7 @@ function AppLayout() {
       <main className="overflow-y-scroll bg-gray-200 p-[10px]">
         <Outlet />
       </main>
-      <Footer />
+      {hasCartItem && <Footer />}
     </>
   );
 }
