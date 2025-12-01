@@ -10,7 +10,6 @@ import Error from "./ui/Error";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import styled from "styled-components";
 
 import { Toaster } from "react-hot-toast";
 import Table from "./ui/Table";
@@ -21,11 +20,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-const H1 = styled.h1`
-  font-size: 30px;
-  font-weight: 600;
-`;
 
 function App() {
   const router = createBrowserRouter([
@@ -42,7 +36,10 @@ function App() {
         },
         { path: "/product/:item", element: <ProductDetail /> },
         { path: "/cart", element: <Cart /> },
-        { path: "/table", element: <Table /> },
+        {
+          path: "/table",
+          element: <Table setEditingID={null} isEditSession={false} />,
+        },
       ],
     },
   ]);
