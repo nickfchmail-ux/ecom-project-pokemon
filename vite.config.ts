@@ -7,7 +7,6 @@ import eslint from "vite-plugin-eslint2";
 
 export default defineConfig({
   plugins: [react(), eslint(), tailwindcss()],
-  build: { outDir: "build" },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"), // ← THIS is what fixes your error
