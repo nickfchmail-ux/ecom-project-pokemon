@@ -1,0 +1,92 @@
+.slider {
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(5, 100%);
+}
+
+.bg {
+  position: relative; // ← important
+  height: 35vh;
+  overflow: hidden; // optional, keeps things tidy
+  display: flex;
+  place-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0; // top/right/bottom/left: 0
+    background: url("https://ntcfaqkdafuaxfxoweab.supabase.co/storage/v1/object/public/cabin-images/akin-cakiner-9cIkK-hLD9k-unsplash.jpg")
+      center / cover no-repeat;
+
+    filter: grayscale(100%) opacity(0.65);
+  }
+}
+h1 {
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto;
+  place-items: center;
+}
+
+.container .wrapper {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+.container .wrapper_holder {
+  display: grid;
+  grid-template-columns: repeat(4, 100%);
+  height: 100%;
+  width: 100%;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container :global(#slider_image_1) {
+  background: url("https://ntcfaqkdafuaxfxoweab.supabase.co/storage/v1/object/public/cabin-images/guillermo-diaz-fs6zYhHyzvI-unsplash-u.jpg")
+    center / cover no-repeat;
+}
+
+.container :global(#slider_image_2) {
+  background: url("https://ntcfaqkdafuaxfxoweab.supabase.co/storage/v1/object/public/cabin-images/halfcut-pokemon-a5ofjvTGNnQ-unsplash-u.jpg")
+    center / cover no-repeat;
+}
+
+.container :global(#slider_image_3) {
+  background: url("https://ntcfaqkdafuaxfxoweab.supabase.co/storage/v1/object/public/cabin-images/janis-fasel-gmLhKk7Djhk-unsplash-u.jpg")
+    center / cover no-repeat;
+}
+
+.container :global(#slider_image_4) {
+  background: url("https://ntcfaqkdafuaxfxoweab.supabase.co/storage/v1/object/public/cabin-images/jerry-johandy-dPKv2iI5ChU-unsplash-u.jpg")
+    center / cover no-repeat;
+}
+.container .buttonHolder .button {
+  background-color: white;
+
+  border-radius: 15px;
+  display: inline-block;
+  margin: 0.3rem;
+}
+
+.container .buttonHolder {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 2;
+  align-self: self-end;
+}
+
+.buttonHolder button.active,
+.buttonHolder button:hover {
+  background: white;
+  transform: scale(1.4);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}

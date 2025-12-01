@@ -1,0 +1,41 @@
+@use "@/styles/_variables" as *;
+@use "@/styles/_mixins" as *;
+@use "@/styles/_functions" as *;
+
+.icon {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  &,
+  &::before,
+  &::after {
+    width: 12px;
+    height: 0.5px;
+    background-color: black;
+  }
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+  }
+
+  &::before {
+    top: 4px;
+  }
+
+  &::after {
+    top: -4px;
+  }
+}
+
+.menu_label {
+  position: fixed;
+  top: 10px;
+  right: 0;
+}
+
+.header {
+  transition: all 0.5s ease-in-out;
+}
