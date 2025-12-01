@@ -1,3 +1,4 @@
+import Logo from "@/ui/Logo";
 import { memo } from "react";
 import { FaRegMessage } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +23,7 @@ function HorizontalNav() {
       />
 
       <header className="horizontal-header fixed top-0 right-0 left-0 z-40 flex h-[10vh] items-center justify-between bg-amber-50/60 p-4">
-        <div>My Logo</div>
+        <Logo />
         <nav className="hidden gap-6 sm:flex">
           <NavLink
             to="/"
