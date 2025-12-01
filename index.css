@@ -80,6 +80,10 @@ ol {
   list-style: none;
 }
 
+.tsqd-parent-container {
+  display: none;
+}
+
 /* Remove default button styles (optional, many love this) */
 button {
   background: none;
@@ -88,11 +92,26 @@ button {
 }
 
 #root {
+  overflow: hidden;
   display: grid;
-  grid-template-rows: 10vh 1fr auto;
+  grid-template-rows: [header-start] 10vh [header-end main-start] 1fr [main-end footer-start] auto [footer-end];
   height: 100vh;
 }
 
+.footer {
+  grid-row: footer-start / footer-end;
+}
+
 main {
-  grid-row: 2 / -1;
+  grid-row: [main-start] / [main-end];
+
+  @media (max-width: 768px) {
+    grid-row: 1/3;
+  }
+}
+
+.horizontal-header {
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

@@ -9,7 +9,7 @@ function Footer() {
 
   return (
     <>
-      <div className="flex items-start justify-between p-[1rem]">
+      <div className="footer flex items-start justify-between p-[1rem]">
         <div>
           <h1 className="block">
             總件數:<span>{totalQuantity}</span>

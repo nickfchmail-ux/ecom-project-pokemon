@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate, useNavigation } from "react-router-dom";
 import Footer from "./features/FooterPriceSummary/Footer";
-import Nav from "./features/navigation/Nav";
+import Hamburger from "./features/navigation/Hamburger";
+import Nav from "./features/navigation/HorizontalNav";
+import VertialNav from "./features/navigation/VerticalNav";
 import Loader from "./ui/Loader";
 function AppLayout() {
   const navigation = useNavigation();
@@ -19,9 +21,9 @@ function AppLayout() {
   return (
     <>
       {isLoading && <Loader />}
-
+      <Hamburger />
       <Nav />
-
+      <VertialNav />
       <main className="overflow-y-scroll bg-gray-200 p-[10px]">
         <Outlet />
       </main>
