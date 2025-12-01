@@ -1,8 +1,6 @@
 import { convertCurrency } from "@/helper/helper";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Payment from "../Payment/Payment";
-import PaymentWindow from "../Payment/PaymentWindow";
 function Footer() {
   const cart = useSelector((state) => state.cart.cart);
   const [isPaymentClick, setIsPaymentClick] = useState(false);
@@ -23,18 +21,6 @@ function Footer() {
           </h1>
         </div>
       </div>
-      <Payment
-        setIsPaymentClick={setIsPaymentClick}
-        isPaymentClick={isPaymentClick}
-      >
-        {isPaymentClick && (
-          <PaymentWindow>
-            <button onClick={() => setIsPaymentClick(!isPaymentClick)}>
-              Submit
-            </button>
-          </PaymentWindow>
-        )}
-      </Payment>
     </>
   );
 }
