@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@beastmaster23/pokemon-tcg-yajs-sdk": "^1.1.0",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.10.1",
     "@supabase/supabase-js": "^2.84.0",
@@ -17,7 +18,9 @@
     "@tanstack/react-query": "^5.90.11",
     "@tanstack/react-query-devtools": "^5.91.1",
     "date-fns": "^4.1.0",
+    "dotenv": "^17.2.3",
     "global": "^4.4.0",
+    "pokemontcgsdk": "^2.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-error-boundary": "^6.0.0",

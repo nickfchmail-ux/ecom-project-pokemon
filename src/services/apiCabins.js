@@ -1,7 +1,7 @@
 import supabase, { supabaseUrl } from "./superbase"; // fixed filename typo
 
 export async function getPokemons() {
-  const { data, error } = await supabase.from("cabin").select("*");
+  const { data, error } = await supabase.from("pokemons").select("*");
 
   if (error) {
     console.error(error);

@@ -1,9 +1,8 @@
 import CardOptions from "@/features/cart/CardOptions";
 import { deletePokemons } from "@/services/apiCabins";
-import { updateProductList } from "@/state/global/slices/cartSlice";
 import Discount from "@/ui/Discount";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Description from "./Description";
@@ -27,24 +26,20 @@ function Card({ products, loading }) {
     onError: () => toast.error("Pokemon can not be deleted"),
   });
 
-  useEffect(() => {
-    dispatch(updateProductList(products));
-  }, [loading]);
-
   return products.map((product) => (
     <div
       key={product.id} // ← IMPORTANT
-      className="relative flex w-full flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-shadow hover:shadow-2xl"
+      className="relative flex w-full flex-col place-items-center overflow-hidden rounded-xl bg-white shadow-lg transition-shadow hover:shadow-2xl"
     >
       <img
         src={product.image}
         alt={product.name}
-        className="h-50 w-full object-cover"
+        className="h-50 w-50 object-cover object-center p-8"
       />
-      <div className="p-3">
+      <div className="flex w-full flex-col items-start p-3">
         <ProductName name={product.name} />
-        <Guest guest={product.maxCapacity} />
-        <div className="mt-4 flex items-center justify-between">
+        <Guest guest={product.descriptions.at(0)} />
+        <div className="mt-4 flex w-full items-center justify-between">
           <Price price={product.regularPrice} font={"card"} />
           <Discount discount={product.discount} />
         </div>

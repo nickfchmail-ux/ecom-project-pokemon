@@ -60,7 +60,7 @@ function CardOptions({ id }) {
       )}
       {!hasCartItem && (
         <button
-          className="active:b absolute top-[14rem] right-6 cursor-pointer"
+          className="active:b absolute top-[12.5rem] right-6 cursor-pointer"
           onClick={() => {
             console.log(id);
 

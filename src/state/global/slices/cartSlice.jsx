@@ -38,7 +38,15 @@ const cartSlice = createSlice({
       state.cart = [];
     },
     updateProductList(state, action) {
-      state.productList = action.payload;
+      let withPrice = action.payload.map((item) => {
+        return {
+          ...item,
+          productPrice: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+          discount: Math.floor(Math.random() * (60 - 10 + 1)) + 10,
+        };
+      });
+      console.log(`with price:${withPrice}`);
+      state.productList = withPrice;
     },
   },
 });
