@@ -1,12 +1,15 @@
 import Logo from "@/ui/Logo";
 import { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { FaRegMessage } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 export function VerticalNav({ checked, setChecked }) {
   const dispatch = useDispatch();
   const ref = useRef(null);
-
-  let Open;
+  const cartItemQuantity = useSelector((state) => state.cart.cart).reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
 
   useEffect(function () {
     function handleClick(e) {
@@ -53,7 +56,18 @@ export function VerticalNav({ checked, setChecked }) {
               "rounded-xl px-4 py-2 font-semibold text-cyan-500 shadow-lg shadow-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/60 active:translate-y-0 active:shadow-cyan-500/40"
             }
           >
-            Cart
+            <div className="relative gap-[.5rem]">
+              Cart
+              {cartItemQuantity > 0 && (
+                <>
+                  <FaRegMessage className="absolute top-[-.45rem] right-[-1.1rem] size-[19px] animate-pulse text-2xl text-red-300 drop-shadow-lg" />
+                  <span className="absolute top-[-.4rem] right-[-.9rem] text-[10px] text-red-500">
+                    {cartItemQuantity < 10 ? 0 : ""}
+                    {cartItemQuantity}
+                  </span>
+                </>
+              )}
+            </div>
           </NavLink>
           <NavLink
             to="/contact"
