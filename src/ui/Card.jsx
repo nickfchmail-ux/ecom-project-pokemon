@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Description from "./Description";
 import Guest from "./Guest";
+import Loader from "./Loader";
 import Price from "./Price";
 import ProductName from "./ProductName";
-function Card({ products, loading }) {
+function Card({ products = [], loading }) {
   const { id: editID, ...editValue } = products;
   const dispatch = useDispatch();
   const isEditSession = Boolean(editID);
@@ -25,6 +26,8 @@ function Card({ products, loading }) {
     },
     onError: () => toast.error("Pokemon can not be deleted"),
   });
+
+  if (!products.length) return <Loader />;
 
   return products.map((product) => (
     <div

@@ -1,11 +1,11 @@
 import { getPokemons } from "@/services/apiCabins";
 import { updateProductList } from "@/state/global/slices/cartSlice";
 import Card from "@/ui/Card";
-import Loader from "@/ui/Loader";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 function Product() {
+  const [loadingDispatch, setLoadingDispatch] = useState("");
   const {
     isLoading,
     data: pokemons = [], // ← default to empty array
@@ -22,9 +22,6 @@ function Product() {
   }, [isLoading]);
 
   const product = useSelector((state) => state.cart.productList);
-  console.log(`check product ${JSON.stringify(product)}`);
-
-  if (isLoading) return <Loader />;
 
   return (
     <>
