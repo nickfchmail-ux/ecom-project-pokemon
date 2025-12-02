@@ -10,7 +10,8 @@ const menuSlice = createSlice({
   initialState,
   reducers: {
     updateCheck(state, action) {
-      state.checked = !state.checked;
+      console.log(`update check to ${(typeof action, JSON.stringify(action))}`);
+      state.checked = action.payload;
     },
 
     updateMouseIn(state, action) {

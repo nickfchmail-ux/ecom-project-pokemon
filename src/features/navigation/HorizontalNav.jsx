@@ -1,12 +1,9 @@
 import Logo from "@/ui/Logo";
 import { memo } from "react";
 import { FaRegMessage } from "react-icons/fa6";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { updateCheck } from "../../state/global/slices/menuSlice";
-function HorizontalNav() {
-  const dispatch = useDispatch();
-  const checked = useSelector((state) => state.menu.checked);
+function HorizontalNav({ checked, setChecked }) {
   const cartItemQuantity = useSelector((state) => state.cart.cart).reduce(
     (sum, item) => sum + item.quantity,
     0,
@@ -19,7 +16,9 @@ function HorizontalNav() {
         id="mobile-menu"
         className="peer hidden"
         checked={checked}
-        onChange={() => dispatch(updateCheck())}
+        onChange={(e) => {
+          setChecked(!checked);
+        }}
       />
 
       <header className="horizontal-header fixed top-0 right-0 left-0 z-40 flex h-[10vh] items-center justify-between bg-amber-50/60 p-4">

@@ -1,42 +1,37 @@
-import { updateCheck } from "@/state/global/slices/menuSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useRef } from "react";
+import { MdOutlineCancel } from "react-icons/md";
 import Span from "../../ui/Span";
+function Hamburger({ checked, setChecked }) {
+  const ref = useRef();
 
-function Hamburger() {
-  const checked = useSelector((state) => state.menu.checked);
-  const mouseIn = useSelector((state) => state.menu.mouseIn);
-  const dispatch = useDispatch();
   return (
     <>
       {checked && (
         <div
-          className="fixed inset-0 left-[200px] z-40 bg-black/30"
-          onClick={() => dispatch(updateCheck())}
-        />
+          className="fixed inset-0 left-[200px] z-40 flex items-center justify-center bg-black/30 transition-all hover:text-red-500"
+          onClick={(e) => {
+            setChecked(!checked);
+          }}
+        >
+          <MdOutlineCancel className="size-10" />
+        </div>
       )}
 
       {/* Hamburger button */}
       <label
         htmlFor="mobile-menu"
-        className={`peer-label fixed top-5 right-4 z-500 flex h-5 w-5 cursor-pointer items-center rounded-full bg-amber-200 sm:hidden ${checked ? "bg-green-200" : ""}`}
+        className={`peer-label fixed top-5 right-4 z-500 flex h-8 w-8 cursor-pointer items-center rounded-full bg-amber-200 transition-all duration-500 sm:hidden ${checked ? "opacity-0" : "opacity-100"}`}
       >
         <Span
           backgroundColor={"bg-black"}
           checked={checked}
           position={"center"}
-          hover={mouseIn}
         />
-        <Span
-          backgroundColor={"bg-black"}
-          checked={checked}
-          position={"top"}
-          hover={mouseIn}
-        />
+        <Span backgroundColor={"bg-black"} checked={checked} position={"top"} />
         <Span
           backgroundColor={"bg-black"}
           checked={checked}
           position={"bottom"}
-          hover={mouseIn}
         />
       </label>
     </>
