@@ -1,17 +1,16 @@
 import Cart from "@/features/cart/Cart";
+import PokemonDetails from "@/features/product/PokemonDetails";
 import "@/styles/global.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./AppLayout";
 import Contact from "./features/learningArea/Contact";
-import Product from "./features/productCard/Product";
+import Product from "./features/product/Products";
 import HomePage from "./pages/HomePage";
-import ProductDetail from "./pages/ProductDetail";
 import { PostsProvider } from "./state/global/contexts/PostsContext";
 import Error from "./ui/Error";
-
-import { Toaster } from "react-hot-toast";
 import Table from "./ui/Table";
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,7 +33,7 @@ function App() {
 
           errorElement: <Error />,
         },
-        { path: "/product/:item", element: <ProductDetail /> },
+        { path: "/product/:item", element: <PokemonDetails /> },
         { path: "/cart", element: <Cart /> },
         {
           path: "/table",

@@ -1,10 +1,8 @@
-import { getPokemons } from "@/services/apiCabins";
-import { updateProductList } from "@/state/global/slices/cartSlice";
-import Card from "@/ui/Card";
+import Cards from "@/features/product/Cards";
+import { getPokemons } from "@/services/pokemonApi";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-function Product() {
+import { memo, useState } from "react";
+function Products() {
   const [loadingDispatch, setLoadingDispatch] = useState("");
   const {
     isLoading,
@@ -15,13 +13,7 @@ function Product() {
     queryFn: getPokemons,
   });
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(updateProductList(pokemons));
-  }, [isLoading]);
-
-  const product = useSelector((state) => state.cart.productList);
+  console.log(JSON.stringify(pokemons));
 
   return (
     <>
@@ -29,10 +21,10 @@ function Product() {
         Our Pokémon
       </h1>
       <div className="mx-auto grid w-[75vw] grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <Card products={product} loading={isLoading} />
+        <Cards products={pokemons} loading={isLoading} />
       </div>
     </>
   );
 }
 
-export default Product;
+export default memo(Products);

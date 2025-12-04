@@ -1,4 +1,5 @@
 import { convertCurrency } from "@/helper/helper";
+import { memo } from "react";
 
 function Price({ price, font }) {
   return (
@@ -10,4 +11,4 @@ function Price({ price, font }) {
   );
 }
 
-export default Price;
+export default memo(Price);

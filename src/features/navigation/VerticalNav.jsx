@@ -1,5 +1,5 @@
 import Logo from "@/ui/Logo";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { FaRegMessage } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -93,4 +93,4 @@ export function VerticalNav({ checked, setChecked }) {
   );
 }
 
-export default VerticalNav;
+export default memo(VerticalNav);
