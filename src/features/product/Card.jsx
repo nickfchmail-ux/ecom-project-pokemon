@@ -7,7 +7,7 @@ import ProductName from "@/ui/ProductName";
 import { memo } from "react";
 import CardOptions from "../cart/CardOptions";
 function Card({ product }) {
-  if (!product) return <Loader />;
+  if (!product.pokemons_selling.regular_price) return <Loader />;
 
   return (
     <div className="relative flex w-full flex-col place-items-center overflow-hidden rounded-xl bg-white shadow-lg transition-shadow hover:shadow-2xl">

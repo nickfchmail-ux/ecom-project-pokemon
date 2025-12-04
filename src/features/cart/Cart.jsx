@@ -7,7 +7,7 @@ function Cart() {
   const { cart } = useSelector((state) => state.cart);
 
   const hasCartItem = cart.length > 0;
-  console.log(`check has cart: ${hasCartItem}`);
+  console.log(JSON.stringify(cart));
   return hasCartItem ? (
     <>
       <div className="divide-y-5 divide-stone-200">
@@ -24,7 +24,7 @@ function Cart() {
             <CartItem
               id={item.id}
               productName={item.name}
-              productPrice={item.regularPrice}
+              productPrice={item.pokemons_selling.regular_price}
               totalPrice={item.totalPrice}
               quantity={item.quantity}
               image={item.image}

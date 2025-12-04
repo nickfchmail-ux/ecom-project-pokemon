@@ -15,8 +15,6 @@ function CartItem({
   totalPrice,
   image,
 }) {
-  console.log(`Total Price: ${totalPrice}`);
-
   const dispatch = useDispatch();
 
   function handleDecreaseItem() {
