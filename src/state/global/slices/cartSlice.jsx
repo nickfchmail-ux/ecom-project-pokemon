@@ -9,6 +9,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
+      console.log(`slice: ${action.payload}`);
       const hasItemAlready =
         state.cart.filter((cartItem) => cartItem.id === action.payload.id)
           .length > 0;
@@ -19,7 +20,7 @@ const cartSlice = createSlice({
         state.cart.push({
           ...selectedItem,
           quantity: 1,
-          totalPrice: selectedItem.pokemons_selling.regular_price,
+          totalPrice: selectedItem.regular_price,
         });
       }
     },
@@ -30,7 +31,7 @@ const cartSlice = createSlice({
       const item = state.cart.filter((i) => i.id === action.payload.id).at(0);
 
       item.quantity++;
-      item.totalPrice = item.quantity * item.pokemons_selling.regular_price;
+      item.totalPrice = item.quantity * item.regular_price;
     },
     decreaseItemQuantity(state, action) {
       const item = state.cart.find((i) => i.id === action.payload.id);

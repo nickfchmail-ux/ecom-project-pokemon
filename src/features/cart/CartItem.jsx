@@ -7,29 +7,22 @@ import Row from "@/ui/Row";
 import { BsCartDash, BsCartPlus } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-function CartItem({
-  id,
-  productName,
-  productPrice,
-  quantity,
-  totalPrice,
-  image,
-}) {
+function CartItem({ item }) {
   const dispatch = useDispatch();
 
   function handleDecreaseItem() {
     if (quantity === 1) {
-      dispatch(deleteItem(id));
+      dispatch(deleteItem(item.id));
       return;
     }
 
-    dispatch(decreaseItemQuantity(id));
+    dispatch(decreaseItemQuantity(item));
   }
 
   const cart = useSelector((state) => state.cart.cart);
 
   const currentQuantity = Array.from(cart).find((i) => {
-    return i.id === id;
+    return i.id === item.id;
   })?.quantity;
 
   const hasCartItem = currentQuantity > 0;
@@ -37,15 +30,15 @@ function CartItem({
   return (
     <Row>
       <p>
-        <img src={image} alt="" />
+        <img src={item.image} alt="" />
       </p>
-      <p>{productName}</p>
-      <p>{productPrice}</p>
+      <p>{item.name}</p>
+      <p>{item.regular_price}</p>
 
-      <p>{quantity}</p>
-      <p className="font-semibold">{totalPrice}</p>
+      <p>{item.quantity}</p>
+      <p className="font-semibold">{item.totalPrice}</p>
       <button
-        onClick={() => dispatch(increaseItemQuantity(id))}
+        onClick={() => dispatch(increaseItemQuantity(item))}
         className="active:text-blue-60 flex cursor-pointer justify-center transition-all hover:text-blue-700 active:scale-120"
       >
         <BsCartPlus className="block size-[1.3rem]" />
@@ -53,9 +46,9 @@ function CartItem({
       <button
         onClick={() => {
           if (currentQuantity === 1) {
-            dispatch(deleteItem(id));
+            dispatch(deleteItem(item.id));
           } else {
-            dispatch(decreaseItemQuantity(id));
+            dispatch(decreaseItemQuantity(item));
           }
         }}
         className="flex cursor-pointer justify-center transition-all hover:text-red-700 active:scale-80 active:text-red-600"
@@ -65,7 +58,7 @@ function CartItem({
       <button
         className="flex cursor-pointer justify-center text-red-500 hover:scale-110 active:scale-50"
         onClick={() => {
-          dispatch(deleteItem(id));
+          dispatch(deleteItem(item.id));
         }}
       >
         <MdClear className="size-[1.3rem]" />

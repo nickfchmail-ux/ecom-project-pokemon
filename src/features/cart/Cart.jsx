@@ -7,7 +7,7 @@ function Cart() {
   const { cart } = useSelector((state) => state.cart);
 
   const hasCartItem = cart.length > 0;
-  console.log(JSON.stringify(cart));
+
   return hasCartItem ? (
     <>
       <div className="divide-y-5 divide-stone-200">
@@ -21,14 +21,7 @@ function Cart() {
             <h1></h1>
           </Row>
           {cart.map((item) => (
-            <CartItem
-              id={item.id}
-              productName={item.name}
-              productPrice={item.pokemons_selling.regular_price}
-              totalPrice={item.totalPrice}
-              quantity={item.quantity}
-              image={item.image}
-            />
+            <CartItem item={item} />
           ))}
         </Form>
       </div>

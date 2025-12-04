@@ -72,7 +72,7 @@ function CardOptions({ id }) {
           className="absolute top-[12.5rem] right-6 z-10 cursor-pointer"
           onClick={(e) => {
             e.stopPropagation();
-            console.log(id);
+            console.log(`cart pokemon:${pokemon}`);
             console.log(`current quantity: ${currentQuantity}`);
             if (!hasCartItem) {
               dispatch(addItem(selectedPokemon));

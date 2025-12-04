@@ -13,7 +13,7 @@ function Image({ url, id }) {
       {showButton && <TiZoom className="absolute top-5 right-0 size-10" />}
       <img
         src={url}
-        className={`relative h-50 w-50 object-cover object-center p-8 transition-all ${showButton ? "scale-[1.2]" : ""} `}
+        className={`relative h-50 w-50 object-cover object-center p-10 transition-all ${showButton ? "scale-[1.2]" : ""} `}
       />
 
       <NavLink to={`/product/${id}`} className="absolute inset-0" />

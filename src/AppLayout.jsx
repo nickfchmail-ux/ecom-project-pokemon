@@ -26,7 +26,7 @@ function AppLayout() {
       <Hamburger checked={checked} setChecked={setChecked} />
       <HorizontalNav checked={checked} setChecked={setChecked} />
       <VerticalNav checked={checked} setChecked={setChecked} />
-      <main className="overflow-y-scroll bg-gray-200 p-[10px]">
+      <main className="overflow-y-scroll bg-gray-200 p-0">
         <Outlet />
       </main>
       {hasCartItem && <Footer />}
