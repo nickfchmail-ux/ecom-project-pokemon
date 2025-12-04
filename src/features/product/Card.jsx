@@ -16,8 +16,11 @@ function Card({ product }) {
         <ProductName name={product.name} />
 
         <div className="mt-4 flex w-full items-center justify-between">
-          <Price price={product.pokemons_selling.regular_price} font={"card"} />
-          <Discount discount={product.pokemons_selling.discount} />
+          <Price
+            price={product.pokemons_selling?.regular_price}
+            font={"card"}
+          />
+          <Discount discount={product.pokemons_selling?.discount} />
         </div>
         <Description description={product.descriptions.at(0)} />
       </div>

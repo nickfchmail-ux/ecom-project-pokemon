@@ -13,8 +13,6 @@ function Products() {
     queryFn: getPokemons,
   });
 
-  console.log(JSON.stringify(pokemons));
-
   return (
     <>
       <h1 className="my-12 text-center text-5xl text-white drop-shadow-lg">
