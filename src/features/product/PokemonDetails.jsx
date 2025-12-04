@@ -28,8 +28,8 @@ function PokemonDetails() {
       <div className="mb-5 grid h-full grid-rows-[auto_1fr_auto]">
         <ul className="flex flex-col gap-5">
           <li className="flex gap-1">
-            {pokemonInfo.species.map((p) => (
-              <img className="h-5" src={`/${p.toLowerCase()}.png`} />
+            {pokemonInfo.species.map((p, i) => (
+              <img className="h-5" src={`/${p.toLowerCase()}.png`} key={p} />
             ))}
           </li>
           <li> {pokemonInfo?.name}</li>
@@ -41,7 +41,9 @@ function PokemonDetails() {
           {pokemonInfo?.descriptions.map((des, index) => {
             return (
               index < 3 && (
-                <p className="place-self-start text-[0.8rem]">{des}</p>
+                <p className="place-self-start text-[0.8rem]" key={index}>
+                  {des}
+                </p>
               )
             );
           })}
