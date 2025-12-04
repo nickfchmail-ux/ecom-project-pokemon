@@ -20,8 +20,8 @@ function PokemonDetails() {
     .at(0);
   return (
     <div className="grid place-items-start gap-5 px-10 pt-5 sm:grid-cols-[minmax(200px,1fr)_1fr]">
-      <div>
-        <p>ID No. {pokemonID}</p>
+      <div className="flex flex-col items-center justify-center place-self-center">
+        <p className="place-self-start">ID No. {pokemonID}</p>
         <img src={pokemonInfo.image} alt="" />
       </div>
 
