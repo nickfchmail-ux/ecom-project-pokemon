@@ -51,11 +51,8 @@ function Products() {
       <h1 className="my-12 text-center text-5xl text-white drop-shadow-lg">
         Our Pokémon
       </h1>
-      <Filter />
-      <span className="sticky top-25 m-5 rounded-2xl bg-green-300 px-4 py-2 text-emerald-800">
-        {" "}
-        {(filteredPokemon || pokemon).length} results
-      </span>
+      <Filter result={(filteredPokemon || pokemon).length} />
+      <span className="absolute top-45 m-5 md:top-40"></span>
       <div className="mx-auto grid w-[75vw] grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {(filteredPokemon || pokemon).map((p) => (
           <Card product={p} key={p.name} />

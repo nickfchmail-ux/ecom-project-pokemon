@@ -6,12 +6,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./AppLayout";
-import Contact from "./features/learningArea/Contact";
 import Product from "./features/product/Products";
 import HomePage from "./pages/HomePage";
 import { PostsProvider } from "./state/global/contexts/PostsContext";
 import Error from "./ui/Error";
-import Table from "./ui/Table";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -35,14 +33,6 @@ function App() {
         },
         { path: "/product/:item", element: <PokemonDetails /> },
         { path: "/cart", element: <Cart /> },
-        {
-          path: "/table",
-          element: <Table setEditingID={null} isEditSession={false} />,
-        },
-        {
-          path: "/contact",
-          element: <Contact />,
-        },
       ],
     },
   ]);

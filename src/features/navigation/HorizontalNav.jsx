@@ -10,7 +10,7 @@ function HorizontalNav({ checked, setChecked }) {
   );
 
   return (
-    <div className="">
+    <div className="z-500">
       <input
         type="checkbox"
         id="mobile-menu"
@@ -21,7 +21,7 @@ function HorizontalNav({ checked, setChecked }) {
         }}
       />
 
-      <header className="horizontal-header fixed top-0 right-0 left-0 z-40 flex h-[10vh] items-center justify-between bg-amber-50/60 p-4">
+      <header className="horizontal-header fixed top-0 right-0 left-0 flex h-[10vh] items-center justify-between bg-amber-50/60 p-4">
         <Logo />
         <nav className="hidden gap-6 sm:flex">
           <NavLink
@@ -58,22 +58,6 @@ function HorizontalNav({ checked, setChecked }) {
                 </>
               )}
             </div>
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={
-              "rounded-xl px-4 py-2 font-semibold text-lime-500 shadow-lg shadow-lime-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-lime-500/60 active:translate-y-0 active:shadow-lime-500/40"
-            }
-          >
-            Contact
-          </NavLink>
-          <NavLink
-            to="/table"
-            className={
-              "rounded-xl px-4 py-2 font-semibold text-fuchsia-500 shadow-lg shadow-fuchsia-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-fuchsia-500/60 active:translate-y-0 active:shadow-fuchsia-500/40"
-            }
-          >
-            Table
           </NavLink>
         </nav>
       </header>

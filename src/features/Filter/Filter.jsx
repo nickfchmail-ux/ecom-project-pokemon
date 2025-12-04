@@ -1,7 +1,7 @@
 import usePokemon from "@/hooks/pokemonData";
 import { TbFilterCancel } from "react-icons/tb";
 import { useSearchParams } from "react-router-dom";
-function Filter() {
+function Filter({ result }) {
   const { pokemon = [], isLoadingPokemon, error } = usePokemon();
 
   const types = [
@@ -41,7 +41,10 @@ function Filter() {
   ];
   return (
     <>
-      <li className="sticky top-0 z-50 m-0 mb-5 flex flex-wrap gap-1 bg-amber-300 px-2 py-5">
+      <li className="sticky top-0 z-2 m-0 mb-5 flex flex-wrap gap-1 bg-amber-300 px-2 py-5">
+        <span className="absolute right-0 bottom-0 m-1 rounded-2xl bg-green-300 px-2 py-1 text-emerald-800">
+          {result} results
+        </span>
         {types.map((t) => {
           if (t === "All")
             return (
@@ -61,7 +64,7 @@ function Filter() {
           return (
             <img
               src={`/${t}.png`}
-              className="h-[1.5rem] cursor-pointer"
+              className="h-[.8rem] cursor-pointer sm:h-[1rem] md:h-[1.5rem]"
               onClick={() =>
                 setSearchParams((prev) => {
                   if (prev.get("species") === t) {
