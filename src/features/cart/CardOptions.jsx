@@ -69,7 +69,7 @@ function CardOptions({ id }) {
       )}
       {!hasCartItem && (
         <button
-          className="absolute top-[12.5rem] right-6 z-10 cursor-pointer"
+          className="absolute top-[12.5rem] right-6 z-1 cursor-pointer"
           onClick={(e) => {
             e.stopPropagation();
             console.log(`cart pokemon:${pokemon}`);
