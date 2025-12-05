@@ -1,9 +1,15 @@
 import usePokemon from "@/hooks/pokemonData";
+import { useState } from "react";
 import { TbFilterCancel } from "react-icons/tb";
 import { useSearchParams } from "react-router-dom";
 function Filter({ result }) {
   const { pokemon = [], isLoadingPokemon, error } = usePokemon();
+  const [activeSpecies, setActiveSpecies] = useState("");
 
+  const [searchParam] = useSearchParams();
+
+  const currentSpecies = searchParam.get("species");
+  console.log(`current active ${currentSpecies}`);
   const types = [
     "bug",
     "dark",
@@ -42,14 +48,14 @@ function Filter({ result }) {
   return (
     <>
       <li className="sticky top-0 z-2 m-0 mb-5 flex flex-wrap gap-1 bg-amber-300 px-2 py-5">
-        <span className="absolute right-0 bottom-0 m-1 rounded-2xl bg-green-300 px-2 py-1 text-emerald-800">
+        <span className="absolute right-0 bottom-3.5 m-1 rounded-2xl bg-green-300 px-2 py-1 text-[10px] text-emerald-800">
           {result} results
         </span>
         {types.map((t) => {
           if (t === "All")
             return (
               <button
-                className="gap-.5 flex w-[15rem] items-center justify-around text-red-500"
+                className={`${t === currentSpecies ? "active" : ""} gap-.5 flex w-[15rem] items-center justify-around text-red-500`}
                 onClick={() => {
                   setSearchParams((prev) => {
                     prev.set("species", "All");
@@ -64,7 +70,7 @@ function Filter({ result }) {
           return (
             <img
               src={`/${t}.png`}
-              className="h-[.8rem] cursor-pointer sm:h-[1rem] md:h-[1.5rem]"
+              className={`${t === currentSpecies ? "active" : ""} h-[.8rem] cursor-pointer sm:h-[1rem] md:h-[1.5rem]`}
               onClick={() =>
                 setSearchParams((prev) => {
                   if (prev.get("species") === t) {
